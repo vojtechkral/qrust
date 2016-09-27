@@ -1,12 +1,7 @@
-Last:
-	common.rs IntoSlot problem
+QRust - Qt5 binding for Rust
+Experimental code, very incomplete, work in progress,... that type of thing.
 
-qrust-gen:
-	Crate-level data:
-		list of reexports
-	Global data:
-		closure slots impls
-		template specs
+----------------------------------------------
 
 
 C ident sigils:
@@ -22,7 +17,18 @@ C ident sigils:
 	x		misc
 
 
+
 TODO:
+Last:
+	common.rs IntoSlot problem
+
+qrust-gen:
+	Crate-level data:
+		list of reexports
+	Global data:
+		closure slots impls
+		template specs
+
 	w doc
 	? extern "C"
 	- prelude
