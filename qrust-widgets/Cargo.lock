@@ -1,0 +1,35 @@
+[root]
+name = "qr_widgets"
+version = "0.1.0"
+dependencies = [
+ "cmake 0.1.17 (registry+https://github.com/rust-lang/crates.io-index)",
+ "libc 0.2.13 (registry+https://github.com/rust-lang/crates.io-index)",
+ "qr_core 0.1.0",
+]
+
+[[package]]
+name = "cmake"
+version = "0.1.17"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "gcc 0.3.28 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "gcc"
+version = "0.3.28"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "libc"
+version = "0.2.13"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "qr_core"
+version = "0.1.0"
+dependencies = [
+ "cmake 0.1.17 (registry+https://github.com/rust-lang/crates.io-index)",
+ "libc 0.2.13 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+

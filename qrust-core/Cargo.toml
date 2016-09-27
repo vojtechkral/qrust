@@ -1,0 +1,12 @@
+[package]
+name = "qr_core"
+version = "0.1.0"
+authors = ["Vojtech Kral <vojtech@kral.hk>"]
+links = "qrust-core-glue"
+build = "build.rs"
+
+[build-dependencies]
+cmake = "0.1"
+
+[dependencies]
+libc = "0.2.0"

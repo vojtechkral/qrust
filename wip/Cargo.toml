@@ -1,0 +1,11 @@
+[package]
+name = "qr"
+version = "0.1.0"
+authors = ["Vojtech Kral <vojtech@kral.hk>"]
+links = "sys"
+build = "build.rs"
+
+[dependencies]
+libc = "0.2.0"
+qr_core = { path = "../qrust-core" }
+qr_widgets = { path = "../qrust-widgets" }

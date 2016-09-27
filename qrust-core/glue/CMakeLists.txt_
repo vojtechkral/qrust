@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.1.0)
+
+project(qrust-core-glue)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOMOC ON)
+
+find_package(Qt5Core)
+
+set(sources
+	"common.cpp"
+	"qstring.cpp"
+)
+
+add_library(qrust-core-glue STATIC ${sources})
+target_link_libraries(qrust-core-glue Qt5::Core)
+install(TARGETS qrust-core-glue ARCHIVE DESTINATION .)

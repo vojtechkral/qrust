@@ -1,0 +1,36 @@
+Last:
+	common.rs IntoSlot problem
+
+qrust-gen:
+	Crate-level data:
+		list of reexports
+	Global data:
+		closure slots impls
+		template specs
+
+
+C ident sigils:
+	c		constructor
+	d		destructor
+	m		member function
+	v		virtual member function - default impl
+	s		static function
+	S		slot name
+	C		signal connect
+	T		signal trampoline
+	D		signal drop
+	x		misc
+
+
+TODO:
+	w doc
+	? extern "C"
+	- prelude
+	- redesign connecting
+	- const correctness
+	- reporting
+	- lambdas: Send/Sync
+	+ common.h from Core
+	+ header in generated files
+	- signals/slots generation
+	- ctors/dtors

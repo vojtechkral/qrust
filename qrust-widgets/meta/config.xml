@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="core">
+	<class name="QWidget" gen="qobject_vtable">
+		<!-- <exclude>setVisible</exclude> -->
+
+		<exclude>hasEditFocus</exclude>
+		<exclude>setEditFocus</exclude>
+	</class>
+</module>

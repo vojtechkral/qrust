@@ -1,0 +1,39 @@
+/usr/lib/libQt5Concurrent.so
+	libQt5Core.so.5
+/usr/lib/libQt5Core.so
+/usr/lib/libQt5DBus.so
+	libQt5Core.so.5
+/usr/lib/libQt5EglDeviceIntegration.so
+	libQt5DBus.so.5
+	libQt5Gui.so.5
+	libQt5Core.so.5
+/usr/lib/libQt5EglFsKmsSupport.so
+	libQt5EglDeviceIntegration.so.5
+	libQt5Gui.so.5
+	libQt5Core.so.5
+	libQt5DBus.so.5
+/usr/lib/libQt5Gui.so
+	libQt5Core.so.5
+/usr/lib/libQt5Network.so
+	libQt5Core.so.5
+/usr/lib/libQt5OpenGL.so
+	libQt5Widgets.so.5
+	libQt5Gui.so.5
+	libQt5Core.so.5
+/usr/lib/libQt5PrintSupport.so
+	libQt5Widgets.so.5
+	libQt5Gui.so.5
+	libQt5Core.so.5
+/usr/lib/libQt5Sql.so
+	libQt5Core.so.5
+/usr/lib/libQt5Test.so
+	libQt5Core.so.5
+/usr/lib/libQt5Widgets.so
+	libQt5Gui.so.5
+	libQt5Core.so.5
+/usr/lib/libQt5XcbQpa.so
+	libQt5Gui.so.5
+	libQt5DBus.so.5
+	libQt5Core.so.5
+/usr/lib/libQt5Xml.so
+	libQt5Core.so.5

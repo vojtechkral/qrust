@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="core">
+	<class name="QString" gen="qstring">
+		<exclude>arg</exclude>
+	</class>
+	<!-- <class name="QCoreApplication" gen="qapp" /> -->
+	<!-- <class name="QDir" gen="qshareddata" /> -->
+	<class name="QTimer" gen="qobject" />
+</module>

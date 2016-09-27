@@ -1,0 +1,106 @@
+#!/bin/env python3
+
+import sys
+import os
+from bs4 import BeautifulSoup
+from generators import generator
+from utils.types import Klass, typemap
+
+
+def eprint(*args, **kwargs):
+	print(*args, file=sys.stderr, **kwargs)
+	sys.stderr.flush()
+
+def soup(filename):
+	return BeautifulSoup(open(filename), "lxml-xml")
+
+
+class QtModule(object):
+	def __init__(self, name, core=None):
+		eprint("  ", name)
+		self.name = name
+		self.pkgname = "Qt5{}".format(name.capitalize())
+		self.dir = "qrust-{}".format(name)
+		self.index = soup("{}/meta/index.xml".format(self.dir))
+		self.deps = [] if core is None else [ core ]
+		self.cppfiles = []
+		self.rsmods = []
+		self.gens = []
+		self.loadConf()
+
+	def addDep(self, qtmod):
+		self.deps.append(qtmod)
+
+	def addCpp(self, cppfile):
+		self.cppfiles.append(cppfile)
+
+	def addRs(self, rsmod):
+		self.rsmods.append(rsmod)
+
+	def loadConf(self):
+		self.config = soup("{}/meta/config.xml".format(self.dir))
+		self.classes = {}
+		classes = self.config.module.find_all("class")
+		for c in classes:
+			self.classes[c["name"]] = c
+
+	def hasClass(self, klass):
+		klass in classes
+
+	def makeGens(self):
+		top = self.index.INDEX.find("namespace", recursive=False)
+
+		for name, c in self.classes.items():
+			cmeta = top.find("class", attrs={"name": name})
+			klass = Klass(cmeta, c)
+			gen = generator.get(c["gen"])(self, klass)
+			gen.addModFiles()
+			gen.addTypes(typemap)
+			self.gens.append(gen)
+
+		modgen = generator.get("module")(self)
+		self.gens.append(modgen)
+
+	# def loadFns(self):
+	# 	for gen in self.gens:
+	# 		gen.loadFns()
+
+	def generate(self):
+		for gen in self.gens:
+			gen.render()
+
+
+def initMods():
+	eprint("Loading module metadata...")
+
+	core = QtModule("core")
+	core.addCpp("common.cpp")
+	core.addRs("common")
+
+	widgets = QtModule("widgets", core)
+	# TODO: widgets.addDep(gui)
+
+	eprint("...ok")
+	return [ core, widgets ]
+
+def main():
+	eprint("Working directory: {}".format(os.getcwd()))
+	if len(sys.argv) > 1:
+		os.chdir(sys.argv[1])
+
+	mods = initMods()
+
+	eprint("Processing module metadata...")
+	for m in mods:
+		m.makeGens()
+	# for m in mods:
+	# 	m.loadFns()
+
+	eprint("Generating code...")
+	for m in mods:
+		m.generate()
+
+	return 0
+
+if __name__ == '__main__':
+	sys.exit(main())
